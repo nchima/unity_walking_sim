@@ -6,27 +6,24 @@ public class Apple : MonoBehaviour
 {
 
     PlayerController playerController;
-    GameObject playerMain;
-    GameObject playerAlt;
 
     // Start is called before the first frame update
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-
-        playerMain = playerController.GetPlayerMain();
-        playerAlt = playerController.GetPlayerAlt();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //var playerHoldingApple = playerAlt.GetComponentInChildren<Apple>();
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        GameObject playerAlt = playerController.GetPlayerAlt();
 
         Debug.Log("Collided with apple");
 

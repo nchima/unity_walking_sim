@@ -40,13 +40,6 @@ public class PlayerController : MonoBehaviour
     {
         playerAlt.transform.localPosition = playerMain.transform.localPosition;
 
-        if (playerAlt.GetComponentInChildren<Camera>().isActiveAndEnabled == true)
-        {
-
-        }
-
-
-
         //Debug.Log(playerAlt.transform.localPosition + "------" + playerMain.transform.localPosition);
         //playerAlt.transform.position = playerMain.transform.position;
         //playerAlt.transform.rotation = playerMain.transform.rotation;
