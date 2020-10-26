@@ -70,4 +70,20 @@ public class PlayerController : MonoBehaviour
         playerMain.GetComponentInChildren<Camera>().enabled = true;
 
     }
+
+    public bool HasApple()
+    {
+
+        bool hasApple = false;
+
+        var apple = playerAlt.GetComponentsInChildren<Apple>();
+
+        if (apple.Length > 0)
+        {
+            hasApple = true;
+        }
+
+        return hasApple;
+
+    }
 }
