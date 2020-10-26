@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     GameObject playerMain;
     GameObject playerAlt;
 
+    bool playerHasFreeMovement = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        if (!playerHasFreeMovement)
+        {
+            // Disable player ability to walk any direction that is not straight
+            // ahead
+        }
+
         playerAlt.transform.localPosition = playerMain.transform.localPosition;
+
+
 
         //Debug.Log(playerAlt.transform.localPosition + "------" + playerMain.transform.localPosition);
         //playerAlt.transform.position = playerMain.transform.position;
@@ -85,5 +96,10 @@ public class PlayerController : MonoBehaviour
 
         return hasApple;
 
+    }
+
+    public void ActivatePlayer()
+    {
+        playerHasFreeMovement = true;
     }
 }
