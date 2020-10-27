@@ -1,22 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Fountain : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("hsgdhdgdhd");
-    }
+    Apple apple;
+    PlayerController pc;
 
     private void Start()
     {
-        Debug.Log("Hyoooooooooh");
-
+        apple = FindObjectOfType<Apple>();
+        pc = FindObjectOfType<PlayerController>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        Debug.Log("gsgsfgsfsfsfsfsfsfsf");
+        FindAppleDistance();
+    }
+
+    private void FindAppleDistance()
+    {
+        var distanceToApple = Vector3.Distance(apple.gameObject.transform.position, transform.position);
+        Debug.Log(apple.gameObject.transform.position + "---" + distanceToApple + "------" + transform.position);
+
+        if (distanceToApple < 110.5f)
+        {
+            if (pc.HasApple())
+            {
+                apple.SetReachedEndGame();
+
+            }
+        }
     }
 }

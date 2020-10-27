@@ -26,21 +26,6 @@ public class Apple : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    GameObject playerAlt = playerController.GetPlayerAlt();
-
-    //    Debug.Log("Collided with apple");
-
-    //    if (other.tag == "player-main")
-    //    {
-    //        transform.parent = playerAlt.transform;
-    //        transform.localPosition = new Vector3(0, 0, 2);
-
-    //        playerController.SendToApocalypticWorld();
-    //    }
-    //}
-
     private void OnMouseOver()
     {
 
@@ -56,7 +41,7 @@ public class Apple : MonoBehaviour
             //{ return; }
 
             transform.parent = playerMain.transform;
-            transform.localPosition = new Vector3(0, .5f, .5f);
+            transform.localPosition = new Vector3(0, .3f, .5f);
 
             playerController.SendToNormalWorld();
 
@@ -65,6 +50,9 @@ public class Apple : MonoBehaviour
 
     private void DropApple()
     {
+        if (reachedEndGame == true)
+        { return; }
+
         if (!playerController.HasApple())
         { return; }
 
@@ -79,19 +67,17 @@ public class Apple : MonoBehaviour
         playerController.SendToApocalypticWorld();
 
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("Entered fountain");
 
-    //}
 
-    private void OnCollisonEnter(Collider other)
+    public void SetReachedEndGame()
     {
-        Debug.Log(other.tag);
+        GameObject playerMain = playerController.GetPlayerMain();
+        Vector3 applePosition = playerMain.transform.localPosition;
+        applePosition.y += .3f;
+        applePosition.z += .5f;
+        transform.parent = playerMain.transform.parent;
+        transform.localPosition = applePosition;
 
-        if (other.tag == "end-game")
-        {
-            reachedEndGame = true;
-        }
+        reachedEndGame = true;
     }
 }
