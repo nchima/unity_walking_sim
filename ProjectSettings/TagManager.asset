@@ -6,6 +6,7 @@ TagManager:
   tags:
   - player-main
   - player-ruins
+  - end-game
   layers:
   - Default
   - TransparentFX

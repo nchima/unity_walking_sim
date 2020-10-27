@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Deactivate none active player
-        playerMain.GetComponentInChildren<Camera>().enabled = true;
-        playerAlt.GetComponentInChildren<Camera>().enabled = false;
+        playerMain.GetComponentInChildren<Camera>().enabled = false;
+        playerAlt.GetComponentInChildren<Camera>().enabled = true;
 
     }
 
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             // ahead
         }
 
-        playerAlt.transform.localPosition = playerMain.transform.localPosition;
+        playerMain.transform.localPosition = playerAlt.transform.localPosition;
 
 
 
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
         bool hasApple = false;
 
-        var apple = playerAlt.GetComponentsInChildren<Apple>();
+        var apple = playerMain.GetComponentsInChildren<Apple>();
 
         if (apple.Length > 0)
         {
