@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-
+    public float appleEndY = 0.3f;
+    public float appleEndX = .5f;
+    public float appleEndZ = .5f;
     PlayerController playerController;
     public bool reachedEndGame = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -73,8 +76,9 @@ public class Apple : MonoBehaviour
     {
         GameObject playerMain = playerController.GetPlayerMain();
         Vector3 applePosition = playerMain.transform.localPosition;
-        applePosition.y += .3f;
-        applePosition.z += .5f;
+        applePosition.y = appleEndY;
+        applePosition.z = appleEndZ;
+        applePosition.x = appleEndX;
         transform.parent = playerMain.transform.parent;
         transform.localPosition = applePosition;
 

@@ -24,7 +24,7 @@ public class Fountain : MonoBehaviour
         var distanceToApple = Vector3.Distance(apple.gameObject.transform.position, transform.position);
         Debug.Log(apple.gameObject.transform.position + "---" + distanceToApple + "------" + transform.position);
 
-        if (distanceToApple < 110.5f)
+        if (distanceToApple < 04f)
         {
             if (pc.HasApple())
             {
