@@ -5,58 +5,49 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] GameObject playerMain;
-    [SerializeField] GameObject playerAlt;
+    GameObject playerMain;
+    GameObject playerAlt;
 
     bool playerHasFreeMovement = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //var players = FindObjectsOfType<Player>();
+        var players = FindObjectsOfType<Player>();
 
-        //foreach (var player in players)
-        //{
+        foreach (var player in players)
+        {
 
-        //    if (player.gameObject.tag == "player-main")
-        //    {
-        //        playerMain = player.gameObject;
-        //    }
+            if (player.gameObject.tag == "player-main")
+            {
+                playerMain = player.gameObject;
+            }
 
-        //    if (player.gameObject.tag == "player-ruins")
-        //    {
-        //        playerAlt = player.gameObject;
-        //    }
+            if (player.gameObject.tag == "player-ruins")
+            {
+                playerAlt = player.gameObject;
+            }
 
 
 
-        //}
+        }
 
         // Deactivate none active player
-        if (playerMain.active)
-        {
-            playerMain.GetComponentInChildren<Camera>().enabled = false;
-
-        }
-        if (playerAlt.active)
-        {
-            playerAlt.GetComponentInChildren<Camera>().enabled = true;
-        }
+        playerMain.GetComponentInChildren<Camera>().enabled = false;
+        playerAlt.GetComponentInChildren<Camera>().enabled = true;
 
     }
 
     private void Update()
     {
 
-        //if (!playerHasFreeMovement)
-        //{
-        //    // Disable player ability to walk any direction that is not straight
-        //    // ahead
-        //}
+        if (!playerHasFreeMovement)
+        {
+            // Disable player ability to walk any direction that is not straight
+            // ahead
+        }
 
-
-
-        //playerMain.transform.localPosition = playerAlt.transform.localPosition;
+        playerMain.transform.localPosition = playerAlt.transform.localPosition;
 
 
 
@@ -78,25 +69,16 @@ public class PlayerController : MonoBehaviour
 
     public void SendToApocalypticWorld()
     {
-        var playerPosition = playerMain.transform.localPosition;
 
         playerMain.GetComponentInChildren<Camera>().enabled = false;
-        playerMain.SetActive(false);
-        playerAlt.SetActive(true);
         playerAlt.GetComponentInChildren<Camera>().enabled = true;
-        playerAlt.transform.localPosition = playerPosition;
     }
 
     public void SendToNormalWorld()
     {
-        var playerPosition = playerAlt.transform.localPosition;
 
         playerAlt.GetComponentInChildren<Camera>().enabled = false;
-        playerAlt.SetActive(false);
-        playerMain.SetActive(true);
         playerMain.GetComponentInChildren<Camera>().enabled = true;
-        playerMain.transform.localPosition = playerPosition;
-
 
     }
 
